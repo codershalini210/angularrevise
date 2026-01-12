@@ -1,3 +1,8 @@
-<p>
-    {{minutes}} :{{seconds}}
-</p>
+<div class = "timer">
+    <div [ngSwitch]="this.timeLeftColor">
+<p *ngSwitchCase="'haveTime'" class="havetime"> Have time</p>
+<p *ngSwitchCase="'lessTime'" class="lesstime"> Less time</p>
+<p *ngSwitchCase="'noTime'" class="notime"> No time</p>
+    </div>
+    {{minutes}} :{{seconds | number: '2.0'}}
+</div>

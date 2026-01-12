@@ -8,29 +8,40 @@ import { interval, Subscription } from 'rxjs';
   standalone:true,
   imports: [CommonModule,DecimalPipe,NgSwitch, NgSwitchCase],
   templateUrl: './timernew.html',
-  styleUrl: './timernew.css',
+  styleUrls: ['./timernew.css'],
 })
 export class Timernew {
-timer !:TimerModel;
-private sub !:Subscription
-// cdr !:ChangeDetectorRef;
-constructor ( private cdr:ChangeDetectorRef)
-{
-    
-}
-ngOnInit():void{
-  this.timer = new TimerModel()
-   interval(1000).subscribe(()=>
-    {
-this.cdr.detectChanges()
-        this.timer.tick();
-        console.log("sdf")
-        
-this.cdr.detectChanges()
-  
-      })
-}
-togglePause():void{
-  this.timer.togglePause()
-}
+  minutes:number;
+  seconds:number;
+  timeLeftColor: string;
+  constructor(private cdr: ChangeDetectorRef) {
+    this.minutes = 3;
+     this.timeLeftColor = 'haveTime';
+    this.seconds = 59;
+    // setInterval(() => this.tick(), 1000);
+   }
+   ngOnInit()
+   {
+    interval(1000).subscribe(()=>this.tick())
+   }
+  tick() {
+    this.cdr.detectChanges();
+    // console.log(this.seconds)
+    if (--this.seconds < 0) {     
+      this.seconds = 59;
+      if (--this.minutes < 0) {
+        this.minutes = 3;
+        this.seconds = 59;
+      }
+    }
+     if (this.minutes >= 2) {
+      this.timeLeftColor = 'haveTime';
+      return;
+    }
+    if (this.minutes < 2 && this.minutes >= 1) {
+      this.timeLeftColor = 'lessTime';
+      return;
+    }
+    this.timeLeftColor = 'noTime';
+  } 
 }

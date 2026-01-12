@@ -1,16 +1,8 @@
-<div [ngSwitch]="timer.timeLeftColor">
-    <p *ngSwitchCase="'haveTime'" class="haveTime">
-        Have enough time
-    </p>
-    <p *ngSwitchCase="'lessTime'" class="lessTime">
-        Time Less that 2 mins.
-    </p>
-    <p *ngSwitchCase="'noTime'" class="noTime">
-    Time less than a min
-    </p>
-</div>
-<div class="timer">
-    <h4>
-        {{timer.minutes}}:{{timer.seconds|number:'2.0'}}
-    </h4>
+<div class = "timer">
+    <div [ngSwitch]="this.timeLeftColor">
+<p *ngSwitchCase="'haveTime'" class="haveTime"> Have time</p>
+<p *ngSwitchCase="'lessTime'" class="lessTime"> Less time</p>
+<p *ngSwitchCase="'noTime'" class="noTime"> No time</p>
+    </div>
+    {{minutes}} :{{seconds | number: '2.0'}}
 </div>

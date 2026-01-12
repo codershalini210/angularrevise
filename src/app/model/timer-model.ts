@@ -19,6 +19,7 @@ constructor()
 reset():void{
     this.minutes = 3 ;
     this.seconds=59;
+    this.updateTimeColor();
 }
 tick():void{
         // this.cdr.detectChanges();
@@ -28,11 +29,14 @@ tick():void{
     }
     this.buttonLabel = "Pause"
     //chnage color code
-    if(--this.seconds<0)
+    this.seconds--
+    if(this.seconds<0)
     {
         this.seconds=59;
+
 }
-if(--this.minutes<0){
+this.minutes--;
+if(this.minutes<0){
     this.reset();
     }
 }

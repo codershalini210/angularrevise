@@ -1,0 +1,18 @@
+.timer
+{
+    background-color:rgb(245, 95, 245);
+    font-size:30px;
+    height:200px;
+    width:200px;
+    text-align: center;
+    align-content: center;
+}
+.haveTime {
+  color: green;
+}
+.lessTime {
+  color: orange;
+}
+.noTime {
+  color: red;
+}

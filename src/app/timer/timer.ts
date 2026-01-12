@@ -24,7 +24,7 @@ export class Timer {
    }
   tick() {
     this.cdr.detectChanges();
-    console.log(this.seconds)
+    // console.log(this.seconds)
     if (--this.seconds < 0) {     
       this.seconds = 59;
       if (--this.minutes < 0) {

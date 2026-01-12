@@ -18,11 +18,13 @@ export class Timer {
     this.minutes = 0;
      this.timeLeftColor = 'haveTime';
     this.seconds = 59;
+    console.log("inside constructor of timer")
     this.secondsForChild = (this.minutes*60)+this.seconds
     // setInterval(() => this.tick(), 1000);
    }
    ngOnInit()
    {
+    console.log("inside oninit of timer")
     interval(1000).subscribe(()=>this.tick())
    }
   tick() {

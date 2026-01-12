@@ -10,8 +10,13 @@ export class CountdownToEnd {
  @Output() completed:EventEmitter<void>=new EventEmitter()
   intervalId: any;
   constructor() {
-    this.intervalId = setInterval(() => this.tick(), 1000);
+    console.log("inside constructor of count")
+    // this.intervalId = setInterval(() => this.tick(), 1000);
   }
+   ngOnInit()
+     {
+    this.intervalId = setInterval(() => this.tick(), 1000);
+     }
   private tick(): void {
     if (--this.seconds < 1) {
       clearInterval(this.intervalId);

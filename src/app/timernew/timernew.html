@@ -5,4 +5,5 @@
 <p *ngSwitchCase="'noTime'" class="noTime"> No time</p>
     </div>
     {{minutes}} :{{seconds | number: '2.0'}}
+<button (click)="toogleTimer()">{{isRunning?'Pause':'Play'}}</button>
 </div>

@@ -14,16 +14,29 @@ export class Timernew {
   minutes:number;
   seconds:number;
   timeLeftColor: string;
+  isRunning:boolean = false;
+  private subscription :Subscription | null =null
   constructor(private cdr: ChangeDetectorRef) {
     this.minutes = 3;
      this.timeLeftColor = 'haveTime';
     this.seconds = 59;
     // setInterval(() => this.tick(), 1000);
    }
-   ngOnInit()
+   startTimer()
    {
-    interval(1000).subscribe(()=>this.tick())
+    if(!this.subscription || this.subscription.closed)
+    {
+      this.subscription =  interval(1000).subscribe(()=>this.tick())
+    }
    }
+   pauseTimer()
+   {
+    this.subscription?.unsubscribe();
+   }
+  //  ngOnInit()
+  //  {
+  //   interval(1000).subscribe(()=>this.tick())
+  //  }
   tick() {
     this.cdr.detectChanges();
     // console.log(this.seconds)
@@ -44,4 +57,15 @@ export class Timernew {
     }
     this.timeLeftColor = 'noTime';
   } 
+  toogleTimer()
+  {
+    this.isRunning = !this.isRunning ;
+    if(this.isRunning)
+    {
+      this.startTimer();
+    }
+    else{
+      this.pauseTimer()
+    }
+  }
 }

@@ -1,0 +1,7 @@
+.countdown {
+  border: 1px solid rgb(250, 5, 5);
+  border-radius: 5px;
+  padding: 10px;
+  background-color: darkgrey;
+  display: inline-block;
+}

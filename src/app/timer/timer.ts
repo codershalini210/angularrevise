@@ -2,9 +2,10 @@ import { Component ,ChangeDetectorRef } from '@angular/core';
 import { DecimalPipe, NgSwitch, NgSwitchCase } from '@angular/common';
 import { interval } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { CountdownToEnd } from '../countdown-to-end/countdown-to-end';
 @Component({
   selector: 'app-timer',
-  imports: [DecimalPipe,CommonModule, NgSwitch, NgSwitchCase],
+  imports: [CountdownToEnd,DecimalPipe,CommonModule, NgSwitch, NgSwitchCase],
   templateUrl: './timer.html',
   styleUrl: './timer.css',
 })
@@ -12,10 +13,12 @@ export class Timer {
   minutes:number;
   seconds:number;
   timeLeftColor: string;
+  secondsForChild : number;
   constructor(private cdr: ChangeDetectorRef) {
-    this.minutes = 3;
+    this.minutes = 0;
      this.timeLeftColor = 'haveTime';
     this.seconds = 59;
+    this.secondsForChild = (this.minutes*60)+this.seconds
     // setInterval(() => this.tick(), 1000);
    }
    ngOnInit()
@@ -42,4 +45,8 @@ export class Timer {
     }
     this.timeLeftColor = 'noTime';
   } 
+  onCountdownCompleted():void
+  {
+    alert("time up ")
+  }
 }

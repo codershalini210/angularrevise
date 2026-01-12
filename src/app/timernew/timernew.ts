@@ -3,6 +3,7 @@ import { TimerModel } from '../model/timer-model';
 import { CommonModule, NgSwitch, NgSwitchCase } from '@angular/common';
 import { DecimalPipe } from '@angular/common';
 import { interval, Subscription } from 'rxjs';
+import { CountdownToEnd } from '../countdown-to-end/countdown-to-end';
 @Component({
   selector: 'app-timernew',
   standalone:true,
@@ -13,13 +14,15 @@ import { interval, Subscription } from 'rxjs';
 export class Timernew {
   minutes:number;
   seconds:number;
+  // secondsForChild:number;
   timeLeftColor: string;
   isRunning:boolean = false;
   private subscription :Subscription | null =null
   constructor(private cdr: ChangeDetectorRef) {
-    this.minutes = 3;
+    this.minutes = 1;
      this.timeLeftColor = 'haveTime';
     this.seconds = 59;
+    
     // setInterval(() => this.tick(), 1000);
    }
    startTimer()
